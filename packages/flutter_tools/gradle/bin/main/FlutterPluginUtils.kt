@@ -517,7 +517,6 @@ object FlutterPluginUtils {
                 getCompileSdkFromProject(project).toIntOrNull() ?: Int.MAX_VALUE
 
             var maxPluginCompileSdkVersion = projectCompileSdkVersion
-<<<<<<< HEAD
             // TODO(gmackall): This should be updated to reflect newer templates.
             // The default for AGP 4.1.0 used in old templates.
             val ndkVersionIfUnspecified = "21.1.6352462"
@@ -528,10 +527,6 @@ object FlutterPluginUtils {
             @Suppress("USELESS_ELVIS")
             val projectNdkVersion: String =
                 getAndroidExtension(project).ndkVersion ?: ndkVersionIfUnspecified
-=======
-            val projectNdkVersion =
-                getAndroidExtension(project).ndkVersion
->>>>>>> 322ab65ef3dd025e55614d791d85138822ef1bb1
             var maxPluginNdkVersion = projectNdkVersion
             var numProcessedPlugins = pluginList.size
             val pluginsWithHigherSdkVersion = mutableListOf<PluginVersionPair>()
@@ -556,7 +551,6 @@ object FlutterPluginUtils {
                             )
                         )
                     }
-<<<<<<< HEAD
 
                     // TODO(gmackall): We can remove this elvis when our minimum AGP is >= 8.2.
                     //  This value (ndkVersion) is nullable on AGP versions below that.
@@ -564,10 +558,6 @@ object FlutterPluginUtils {
                     @Suppress("USELESS_ELVIS")
                     val pluginNdkVersion: String =
                         getAndroidExtension(pluginProject).ndkVersion ?: ndkVersionIfUnspecified
-=======
-                    val pluginNdkVersion: String =
-                        getAndroidExtension(pluginProject).ndkVersion
->>>>>>> 322ab65ef3dd025e55614d791d85138822ef1bb1
                     maxPluginNdkVersion =
                         VersionUtils.mostRecentSemanticVersion(
                             pluginNdkVersion,
