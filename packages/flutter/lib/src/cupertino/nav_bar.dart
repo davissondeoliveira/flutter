@@ -2484,8 +2484,10 @@ class _NavigationBarSearchField extends StatelessWidget implements PreferredSize
 
   @override
 <<<<<<< HEAD
+  @override
   Size get preferredSize => const Size.fromHeight(searchFieldHeight + verticalPadding * 2);
 =======
+  @override
   Size get preferredSize => const Size.fromHeight(searchFieldHeight + verticalPadding);
 >>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
 }

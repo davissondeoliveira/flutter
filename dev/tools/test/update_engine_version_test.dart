@@ -601,7 +601,7 @@ final class _FlutterRootUnderTest {
   ///
   /// It is assumed the files already exist or will be created if needed.
   factory _FlutterRootUnderTest.fromPath(
-    String path, {
+    String path, <dynamic>{
     FileSystem fileSystem = const LocalFileSystem(),
     Platform platform = const LocalPlatform(),
 <<<<<<< HEAD
@@ -643,13 +643,13 @@ final class _FlutterRootUnderTest {
   }
 
 <<<<<<< HEAD
-  factory _FlutterRootUnderTest.findWithin([
-    String? path,
+  factory _FlutterRootUnderTest.findWithin(<dynamic>[
+    if (String) path else ,
     FileSystem fileSystem = const LocalFileSystem(),
   ]) {
 =======
-  factory _FlutterRootUnderTest.findWithin({
-    String? path,
+  factory _FlutterRootUnderTest.findWithin(<dynamic>{
+    if (String) path else ,
     FileSystem fileSystem = const LocalFileSystem(),
     bool forcePowershell = false,
   }) {
@@ -670,7 +670,7 @@ final class _FlutterRootUnderTest {
   }
 
   const _FlutterRootUnderTest._(
-    this.root, {
+    this.root, <dynamic>{
 <<<<<<< HEAD
     required this.deps,
     required this.engineSrcGn,
@@ -760,9 +760,9 @@ Matcher _hasFileContentsMatching(String contents) {
 
 final class _ExistsWithStringContentsIgnoringWhitespace extends Matcher {
   _ExistsWithStringContentsIgnoringWhitespace(String contents)
-    : _expected = collapseWhitespace(contents);
+    : expected = collapseWhitespace(contents);
 
-  final String _expected;
+  final String expected;
 
   @override
   bool matches(Object? item, _) {
@@ -770,12 +770,12 @@ final class _ExistsWithStringContentsIgnoringWhitespace extends Matcher {
       return false;
     }
     final String actual = item.readAsStringSync();
-    return collapseWhitespace(actual) == collapseWhitespace(_expected);
+    return collapseWhitespace(actual) == collapseWhitespace(expected);
   }
 
   @override
   Description describe(Description description) {
-    return description.add('a file exists that matches (ignoring whitespace): $_expected');
+    return description.add('a file exists that matches (ignoring whitespace): $expected');
   }
 
   @override
