@@ -251,19 +251,29 @@ TEST(DriverInfoVKTest, DisableOldXclipseDriver) {
   EXPECT_FALSE(context->GetDriverInfo()->IsKnownBadDriver());
 }
 
+<<<<<<< HEAD
+TEST(DriverInfoVKTest, AllPowerVRDisabled) {
+  auto const context =
+=======
 TEST(DriverInfoVKTest, OldPowerVRDisabled) {
   std::shared_ptr<ContextVK> context =
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
       MockVulkanContextBuilder()
           .SetPhysicalPropertiesCallback(
               [](VkPhysicalDevice device, VkPhysicalDeviceProperties* prop) {
                 prop->vendorID = 0x1010;
                 prop->deviceType = VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU;
+<<<<<<< HEAD
+=======
                 std::string name = "PowerVR Rogue GE8320";
                 name.copy(prop->deviceName, name.size());
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
               })
           .Build();
 
   EXPECT_TRUE(context->GetDriverInfo()->IsKnownBadDriver());
+<<<<<<< HEAD
+=======
   EXPECT_EQ(context->GetDriverInfo()->GetPowerVRGPUInfo(),
             std::optional<PowerVRGPU>(PowerVRGPU::kUnknown));
 }
@@ -285,6 +295,7 @@ TEST(DriverInfoVKTest, NewPowerVREnabled) {
             std::optional<PowerVRGPU>(PowerVRGPU::kDXT));
   EXPECT_TRUE(GetWorkaroundsFromDriverInfo(*context->GetDriverInfo())
                   .input_attachment_self_dependency_broken);
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
 }
 
 }  // namespace impeller::testing

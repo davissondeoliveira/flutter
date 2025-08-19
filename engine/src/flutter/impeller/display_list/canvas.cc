@@ -942,7 +942,11 @@ void Canvas::DrawVertices(const std::shared_ptr<VerticesGeometry>& vertices,
   } else {
     auto cvg = vertices->GetCoverage(Matrix{});
     FML_CHECK(cvg.has_value());
+<<<<<<< HEAD
+    auto texture_coverage = vertices->GetTextureCoordinateCoverge();
+=======
     auto texture_coverage = vertices->GetTextureCoordinateCoverage();
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
     if (texture_coverage.has_value()) {
       src_coverage =
           Rect::MakeOriginSize(texture_coverage->GetOrigin(),
@@ -1869,8 +1873,13 @@ bool Canvas::SupportsBlitToOnscreen() const {
   return renderer_.GetContext()
              ->GetCapabilities()
              ->SupportsTextureToTextureBlits() &&
+<<<<<<< HEAD
+         renderer_.GetContext()->GetBackendType() !=
+             Context::BackendType::kOpenGLES;
+=======
          renderer_.GetContext()->GetBackendType() ==
              Context::BackendType::kMetal;
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
 }
 
 bool Canvas::BlitToOnscreen(bool is_onscreen) {

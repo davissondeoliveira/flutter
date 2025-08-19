@@ -59,8 +59,14 @@ Rational TextFrame::RoundScaledFontSize(Scalar scale) {
   // An arbitrarily chosen maximum text scale to ensure that regardless of the
   // CTM, a glyph will fit in the atlas. If we clamp significantly, this may
   // reduce fidelity but is preferable to the alternative of failing to render.
+<<<<<<< HEAD
+  constexpr Scalar kMaximumTextScale = 48;
+  Scalar result = std::round(scale * 200) / 200;
+  return std::clamp(result, 0.0f, kMaximumTextScale);
+=======
   Rational result = Rational(std::round(scale * kDenominator), kDenominator);
   return result < kZero ? kZero : result;
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
 }
 
 Rational TextFrame::RoundScaledFontSize(Rational scale) {
@@ -100,6 +106,14 @@ SubpixelPosition TextFrame::ComputeSubpixelPosition(
     case AxisAlignment::kNone:
       return SubpixelPosition::kSubpixel00;
     case AxisAlignment::kX:
+<<<<<<< HEAD
+      return Point(ComputeFractionalPosition(pos.x), 0);
+    case AxisAlignment::kY:
+      return Point(0, ComputeFractionalPosition(pos.y));
+    case AxisAlignment::kAll:
+      return Point(ComputeFractionalPosition(pos.x),
+                   ComputeFractionalPosition(pos.y));
+=======
       return ComputeFractionalPosition(pos.x);
     case AxisAlignment::kY:
       return static_cast<SubpixelPosition>(ComputeFractionalPosition(pos.y)
@@ -108,6 +122,7 @@ SubpixelPosition TextFrame::ComputeSubpixelPosition(
       return static_cast<SubpixelPosition>(
           ComputeFractionalPosition(pos.x) |
           (ComputeFractionalPosition(pos.y) << 2));
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
   }
 }
 
@@ -115,7 +130,11 @@ Matrix TextFrame::GetOffsetTransform() const {
   return transform_ * Matrix::MakeTranslation(offset_);
 }
 
+<<<<<<< HEAD
+void TextFrame::SetPerFrameData(Scalar scale,
+=======
 void TextFrame::SetPerFrameData(Rational scale,
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
                                 Point offset,
                                 const Matrix& transform,
                                 std::optional<GlyphProperties> properties) {

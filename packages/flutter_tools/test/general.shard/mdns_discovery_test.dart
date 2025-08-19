@@ -642,6 +642,10 @@ void main() {
           final MDnsVmServiceDiscovery portDiscovery = MDnsVmServiceDiscovery(
             mdnsClient: client,
             logger: BufferLogger.test(),
+<<<<<<< HEAD
+            flutterUsage: TestUsage(),
+=======
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
             analytics: const NoOpAnalytics(),
           );
 

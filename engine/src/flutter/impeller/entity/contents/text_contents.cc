@@ -108,7 +108,12 @@ void TextContents::ComputeVertexData(
   // interpolated vertex information is also used in the fragment shader to
   // sample from the glyph atlas.
 
+<<<<<<< HEAD
+  constexpr std::array<Point, 6> unit_points = {Point{0, 0}, Point{1, 0},
+                                                Point{0, 1}, Point{1, 0},
+=======
   constexpr std::array<Point, 4> unit_points = {Point{0, 0}, Point{1, 0},
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
                                                 Point{0, 1}, Point{1, 1}};
 
   ISize atlas_size = atlas->GetTexture()->GetSize();
@@ -118,6 +123,11 @@ void TextContents::ComputeVertexData(
   VS::PerVertexData vtx;
   size_t i = 0u;
   size_t bounds_offset = 0u;
+<<<<<<< HEAD
+  for (const TextRun& run : frame->GetRuns()) {
+    const Font& font = run.GetFont();
+    Scalar rounded_scale = frame->GetScale();
+=======
   Rational rounded_scale = frame->GetScale();
   Scalar inverted_rounded_scale = static_cast<Scalar>(rounded_scale.Invert());
   Matrix unscaled_basis =
@@ -131,6 +141,7 @@ void TextContents::ComputeVertexData(
 
   for (const TextRun& run : frame->GetRuns()) {
     const Font& font = run.GetFont();
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
     const Matrix transform = frame->GetOffsetTransform();
     FontGlyphAtlas* font_atlas = nullptr;
 
@@ -174,7 +185,11 @@ void TextContents::ComputeVertexData(
           VALIDATION_LOG << "Could not find font in the atlas.";
           continue;
         }
+<<<<<<< HEAD
+        Point subpixel = TextFrame::ComputeSubpixelPosition(
+=======
         SubpixelPosition subpixel = TextFrame::ComputeSubpixelPosition(
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
             glyph_position, font.GetAxisAlignment(), transform);
 
         std::optional<FrameBounds> maybe_atlas_glyph_bounds =
@@ -190,15 +205,34 @@ void TextContents::ComputeVertexData(
         atlas_glyph_bounds = maybe_atlas_glyph_bounds.value().atlas_bounds;
       }
 
+<<<<<<< HEAD
+      Scalar inverted_rounded_scale = 1.f / rounded_scale;
+=======
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
       Rect scaled_bounds = glyph_bounds.Scale(inverted_rounded_scale);
       // For each glyph, we compute two rectangles. One for the vertex
       // positions and one for the texture coordinates (UVs). The atlas
       // glyph bounds are used to compute UVs in cases where the
       // destination and source sizes may differ due to clamping the sizes
       // of large glyphs.
+<<<<<<< HEAD
+      Point uv_origin = (atlas_glyph_bounds.GetLeftTop()) / atlas_size;
+      Point uv_size = SizeToPoint(atlas_glyph_bounds.GetSize()) / atlas_size;
+
+      Matrix unscaled_basis =
+          basis_transform * Matrix::MakeScale({inverted_rounded_scale,
+                                               inverted_rounded_scale, 1});
+
+      // In typical scales < 48x these values should be -1 or 1. We round to
+      // those to avoid inaccuracies.
+      unscaled_basis.m[0] = AttractToOne(unscaled_basis.m[0]);
+      unscaled_basis.m[5] = AttractToOne(unscaled_basis.m[5]);
+
+=======
       Point uv_origin = atlas_glyph_bounds.GetLeftTop() / atlas_size;
       Point uv_size = SizeToPoint(atlas_glyph_bounds.GetSize()) / atlas_size;
 
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
       Point unrounded_glyph_position =
           // This is for RTL text.
           unscaled_basis * glyph_bounds.GetLeftTop() +
@@ -296,8 +330,13 @@ bool TextContents::Render(const ContentContext& renderer,
           sampler_desc)  // sampler
   );
 
+<<<<<<< HEAD
+  auto& host_buffer = renderer.GetTransientsBuffer();
+  size_t vertex_count = 0;
+=======
   HostBuffer& host_buffer = renderer.GetTransientsBuffer();
   size_t glyph_count = 0;
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
   for (const auto& run : frame_->GetRuns()) {
     glyph_count += run.GetGlyphPositions().size();
   }
@@ -306,6 +345,14 @@ bool TextContents::Render(const ContentContext& renderer,
 
   BufferView buffer_view = host_buffer.Emplace(
       vertex_count * sizeof(VS::PerVertexData), alignof(VS::PerVertexData),
+<<<<<<< HEAD
+      [&](uint8_t* contents) {
+        VS::PerVertexData* vtx_contents =
+            reinterpret_cast<VS::PerVertexData*>(contents);
+        ComputeVertexData(vtx_contents, frame_, scale_,
+                          /*entity_transform=*/entity_transform, offset_,
+                          GetGlyphProperties(), atlas);
+=======
       [&](uint8_t* data) {
         VS::PerVertexData* vtx_contents =
             reinterpret_cast<VS::PerVertexData*>(data);
@@ -330,6 +377,7 @@ bool TextContents::Render(const ContentContext& renderer,
           indices[j++] = base + 2;
           indices[j++] = base + 3;
         }
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
       });
 
   pass.SetVertexBuffer(std::move(buffer_view));

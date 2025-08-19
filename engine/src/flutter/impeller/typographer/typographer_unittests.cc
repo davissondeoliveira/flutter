@@ -137,14 +137,22 @@ TEST_P(TypographerTest, LazyAtlasTracksColor) {
 
   LazyGlyphAtlas lazy_atlas(TypographerContextSkia::Make());
 
+<<<<<<< HEAD
+  lazy_atlas.AddTextFrame(frame, 1.0f, {0, 0}, Matrix(), {});
+=======
   lazy_atlas.AddTextFrame(frame, Rational(1), {0, 0}, Matrix(), {});
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
 
   frame = MakeTextFrameFromTextBlobSkia(
       SkTextBlob::MakeFromString("😀 ", emoji_font));
 
   ASSERT_TRUE(frame->GetAtlasType() == GlyphAtlas::Type::kColorBitmap);
 
+<<<<<<< HEAD
+  lazy_atlas.AddTextFrame(frame, 1.0f, {0, 0}, Matrix(), {});
+=======
   lazy_atlas.AddTextFrame(frame, Rational(1), {0, 0}, Matrix(), {});
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
 
   // Creates different atlases for color and red bitmap.
   auto color_atlas = lazy_atlas.CreateOrGetGlyphAtlas(
@@ -227,8 +235,12 @@ TEST_P(TypographerTest, GlyphAtlasWithLotsOfdUniqueGlyphSize) {
   std::vector<std::shared_ptr<TextFrame>> frames;
   for (size_t index = 0; index < size_count; index += 1) {
     frames.push_back(MakeTextFrameFromTextBlobSkia(blob));
+<<<<<<< HEAD
+    frames.back()->SetPerFrameData(0.6 * index, {0, 0}, Matrix(), {});
+=======
     frames.back()->SetPerFrameData(Rational(6 * index, 10), {0, 0}, Matrix(),
                                    {});
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
   };
   auto atlas =
       context->CreateGlyphAtlas(*GetContext(), GlyphAtlas::Type::kAlphaBitmap,

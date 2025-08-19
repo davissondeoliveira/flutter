@@ -2608,6 +2608,8 @@ void main() {
     expect(find.widgetWithText(CupertinoButton, 'Cancel'), findsOneWidget);
   });
 
+<<<<<<< HEAD
+=======
   testWidgets('CupertinoSliverNavigationBar.search golden tests', (WidgetTester tester) async {
     await tester.binding.setSurfaceSize(const Size(390, 850));
     addTearDown(() => tester.binding.setSurfaceSize(null));
@@ -2671,6 +2673,7 @@ void main() {
     );
   });
 
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
   testWidgets('onSearchableBottomTap callback', (WidgetTester tester) async {
     const Color activeSearchColor = Color(0x0000000A);
     const Color inactiveSearchColor = Color(0x0000000B);

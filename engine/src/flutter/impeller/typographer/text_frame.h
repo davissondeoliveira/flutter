@@ -114,11 +114,23 @@ class TextFrame {
   // processed.
   std::pair<size_t, intptr_t> GetAtlasGenerationAndID() const;
 
+<<<<<<< HEAD
+  Scalar GetScale() const;
+
+  TextFrame& operator=(TextFrame&& other) = default;
+=======
   Rational GetScale() const;
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
 
   const Matrix& GetTransform() const { return transform_; }
 
   fml::StatusOr<flutter::DlPath> GetPath() const;
+
+  Point GetOffset() const;
+
+  Matrix GetOffsetTransform() const;
+
+  const Matrix& GetTransform() const { return transform_; }
 
   Point GetOffset() const;
 

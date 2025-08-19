@@ -334,7 +334,11 @@ TEST_P(DlGoldenTest, SaveLayerAtFractionalValue) {
   DisplayListBuilder builder;
   builder.DrawPaint(DlPaint().setColor(DlColor::kWhite()));
   auto save_paint = DlPaint().setAlpha(100);
+<<<<<<< HEAD
+  builder.SaveLayer(nullptr, &save_paint);
+=======
   builder.SaveLayer(std::nullopt, &save_paint);
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
 
   builder.DrawRoundRect(DlRoundRect::MakeRectRadius(
                             DlRect::MakeLTRB(10.5, 10.5, 200.5, 200.5), 10),

@@ -30,8 +30,16 @@
 #include "impeller/display_list/aiks_context.h"
 #include "impeller/display_list/dl_dispatcher.h"
 #include "impeller/display_list/dl_image_impeller.h"
+#include "impeller/geometry/path_builder.h"
 #include "impeller/geometry/scalar.h"
 #include "impeller/playground/playground.h"
+<<<<<<< HEAD
+#include "include/core/SkCanvas.h"
+#include "include/core/SkMatrix.h"
+#include "include/core/SkPath.h"
+#include "include/core/SkRefCnt.h"
+=======
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
 
 namespace impeller {
 namespace testing {
@@ -1041,9 +1049,17 @@ TEST_P(AiksTest, DepthValuesForPolygonMode) {
 // by re-uploading it.
 TEST_P(AiksTest, ToImageFromImage) {
   DisplayListBuilder builder;
+<<<<<<< HEAD
+  Path ip_path = PathBuilder{}
+                     .AddArc(DlRect::MakeLTRB(0, 0, 100, 100), Radians(0),
+                             Radians(3.14 / 2))
+                     .TakePath();
+  DlPath path = DlPath(ip_path);
+=======
   DlPath path = DlPath::MakeArc(DlRect::MakeLTRB(0, 0, 100, 100), DlDegrees(0),
                                 DlDegrees(90),
                                 /*use_center=*/true);
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
 
   builder.DrawPath(path, DlPaint().setColor(DlColor::kRed()));
 

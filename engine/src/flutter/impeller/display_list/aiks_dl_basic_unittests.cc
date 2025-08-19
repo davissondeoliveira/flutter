@@ -1632,7 +1632,11 @@ TEST_P(AiksTest, BackdropFilterOverUnclosedClip) {
     builder.SaveLayer(std::nullopt, nullptr, image_filter.get());
   }
   builder.Restore();
+<<<<<<< HEAD
+  builder.DrawCircle(SkPoint{100, 100}, 100,
+=======
   builder.DrawCircle(DlPoint(100, 100), 100,
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
                      DlPaint().setColor(DlColor::kAqua()));
 
   ASSERT_TRUE(OpenPlaygroundHere(builder.Build()));

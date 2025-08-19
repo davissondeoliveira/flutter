@@ -1143,6 +1143,8 @@ void main() {
       await gesture.up();
       await tester.pumpAndSettle();
     });
+<<<<<<< HEAD
+=======
 
     testWidgets('dragging does not move the sheet when enableDrag is false', (
       WidgetTester tester,
@@ -1246,5 +1248,6 @@ void main() {
 
     expect(SystemChrome.latestStyle!.statusBarBrightness, Brightness.dark);
     expect(SystemChrome.latestStyle!.statusBarIconBrightness, Brightness.light);
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
   });
 }

@@ -30,6 +30,15 @@ TEST_P(DlGoldenTest, TextBlurMaskFilterRespectCTM) {
         DlBlurMaskFilter::Make(DlBlurStyle::kNormal, /*sigma=*/10,
                                /*respect_ctm=*/true);
     ASSERT_TRUE(RenderTextInCanvasSkia(canvas, "hello world",
+<<<<<<< HEAD
+                                       "Roboto-Regular.ttf", DlPoint(101, 101),
+                                       options));
+    options.mask_filter = nullptr;
+    options.color = DlColor::kRed();
+    ASSERT_TRUE(RenderTextInCanvasSkia(canvas, "hello world",
+                                       "Roboto-Regular.ttf", DlPoint(100, 100),
+                                       options));
+=======
                                        "Roboto-Regular.ttf",  //
                                        DlPoint(101, 101), options));
     options.mask_filter = nullptr;
@@ -37,6 +46,7 @@ TEST_P(DlGoldenTest, TextBlurMaskFilterRespectCTM) {
     ASSERT_TRUE(RenderTextInCanvasSkia(canvas, "hello world",
                                        "Roboto-Regular.ttf",  //
                                        DlPoint(100, 100), options));
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
   };
 
   DisplayListBuilder builder;
@@ -57,6 +67,15 @@ TEST_P(DlGoldenTest, TextBlurMaskFilterDisrespectCTM) {
         DlBlurMaskFilter::Make(DlBlurStyle::kNormal, /*sigma=*/10,
                                /*respect_ctm=*/false);
     ASSERT_TRUE(RenderTextInCanvasSkia(canvas, "hello world",
+<<<<<<< HEAD
+                                       "Roboto-Regular.ttf", DlPoint(101, 101),
+                                       options));
+    options.mask_filter = nullptr;
+    options.color = DlColor::kRed();
+    ASSERT_TRUE(RenderTextInCanvasSkia(canvas, "hello world",
+                                       "Roboto-Regular.ttf", DlPoint(100, 100),
+                                       options));
+=======
                                        "Roboto-Regular.ttf",  //
                                        DlPoint(101, 101), options));
     options.mask_filter = nullptr;
@@ -64,6 +83,7 @@ TEST_P(DlGoldenTest, TextBlurMaskFilterDisrespectCTM) {
     ASSERT_TRUE(RenderTextInCanvasSkia(canvas, "hello world",
                                        "Roboto-Regular.ttf",  //
                                        DlPoint(100, 100), options));
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
   };
 
   DisplayListBuilder builder;

@@ -33,6 +33,10 @@ class FlutterMain {
 
   static bool IsKnownBadSOC(std::string_view hardware);
 
+  static bool IsDeviceEmulator(std::string_view product_model);
+
+  static bool IsKnownBadSOC(std::string_view hardware);
+
  private:
   const flutter::Settings settings_;
   const flutter::AndroidRenderingAPI android_rendering_api_;

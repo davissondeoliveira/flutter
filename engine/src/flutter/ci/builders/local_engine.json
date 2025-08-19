@@ -344,7 +344,13 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+<<<<<<< HEAD
+=======
+>>>>>>> abedbdb83d34260c3817e4cc84a2f75de53833a8
         "device_type=none"
       ],
       "gclient_variables": {
@@ -377,7 +383,12 @@
     {
       "cas_archive": false,
       "drone_dimensions": [
+<<<<<<< HEAD
         "os=Mac-14|Mac-15",
+=======
+        "os=Mac-14",
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
+>>>>>>> abedbdb83d34260c3817e4cc84a2f75de53833a8
         "device_type=none"
       ],
       "gclient_variables": {

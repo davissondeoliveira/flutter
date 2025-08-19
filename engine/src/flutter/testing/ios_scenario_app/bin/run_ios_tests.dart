@@ -193,6 +193,14 @@ final _args =
         'os-version',
         help: 'The OS version of the iOS simulator device to use.',
         defaultsTo: '18.2',
+<<<<<<< HEAD:engine/src/flutter/testing/scenario_app/bin/run_ios_tests.dart
+      )
+      ..addFlag(
+        'with-impeller',
+        help: 'Whether to use the Impeller backend to run the tests.',
+        defaultsTo: true,
+=======
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8:engine/src/flutter/testing/ios_scenario_app/bin/run_ios_tests.dart
       )
       ..addOption(
         'dump-xcresult-on-failure',

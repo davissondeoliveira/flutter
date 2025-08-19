@@ -1699,7 +1699,11 @@ import 'output-localization-file_en.dart' deferred as output-localization-file_e
       // If only the types of the template had been inferred,
       // and not for the translation there would be a mismatch:
       // in this case `num` for count and `null` (the default), which is incompatible
+<<<<<<< HEAD
+      // and `getGeneratedFileContent` would throw an exception.
+=======
       // and `getSyntheticGeneratedFileContent` would throw an exception.
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
       //
       // This test ensures that both template and locale can be equally partially defined
       // in the arb.
@@ -1728,7 +1732,11 @@ import 'output-localization-file_en.dart' deferred as output-localization-file_e
   }
 }''',
           });
+<<<<<<< HEAD
+          expect(getGeneratedFileContent(locale: 'en'), isA<String>());
+=======
           expect(getSyntheticGeneratedFileContent(locale: 'en'), isA<String>());
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
         },
       );
     });
@@ -2222,12 +2230,17 @@ import 'output-localization-file_en.dart' deferred as output-localization-file_e
               isA<L10nException>().having(
                 (L10nException e) => e.message,
                 'message',
+<<<<<<< HEAD
+                contains(
+                  'The placeholder, springStartDate, has its "type" resource attribute set to the "Object" type in locale "ja", but it is "DateTime" in the template placeholder.',
+=======
                 allOf(
                   contains('placeholder "springStartDate"'),
                   contains('locale "ja"'),
                   contains(
                     'has its "type" resource attribute set to the type "Object" in locale "ja", but it is "DateTime" in the template placeholder.',
                   ),
+>>>>>>> b25305a8832cfc6ba632a7f87ad455e319dccce8
                 ),
               ),
             ),
